@@ -4,30 +4,44 @@ let data = document.getElementById('data')
 let outExist = document.getElementsByTagName('out')
 let APIurl = 'https://api.github.com/'
 
-APICall.onclick = function() {
+window.addEventListener("keypress",
+    function(event) {
+        if (event.keyCode == '13') {
+            searchOrgs()
+        }
+});
+
+function searchOrgs() {
     if (outExist.length) {
         console.log(outExist)
         clearSearch()
     }
     let search = document.getElementById('searchInput')
-    fetch(APIurl + 'orgs/' + search.value + '/repos?sort=created')
+    if(search.value == '') {
+        alert('Nothing to seach..')
+    } else {
+        fetch(APIurl + 'orgs/' + search.value + '/repos?sort=created')
         .then(response => response.json())
         .then(json => {
             console.log(json)
             for(let x=0; x < json.length; x++) {
-                let out = document.createElement('out')
+                let out = document.createElement('div')
+                out.setAttribute("id", "repo" + x);
                 out.innerHTML = json[x].name + '<br>';
                 let br = document.createElement('br');
                 data.appendChild(out);
                 data.appendChild(br);
             }
         })
+    }
+
 }
 
 function clearSearch() {
-    // let elem = document.getElementById("data");
-    console.log(elem)
-    outExist.parentNode.removeChild(outExist);
+    document.getElementsByTagName('out').innerHTML = ''
+    // var parent = document.getElementById("div1");
+    // var child = document.getElementById("p1");
+    // parent.removeChild(child);
 }
 
 

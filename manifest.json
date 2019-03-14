@@ -1,5 +1,5 @@
 {
-    "name": "Chrome Extension Example",
+    "name": "GitIssue",
     "version": "1.0",
     "description": "Build an Extension!",
     "permissions": ["activeTab", "declarativeContent", "storage"],
