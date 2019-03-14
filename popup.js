@@ -1,8 +1,16 @@
 
 let APICall = document.getElementById('APICall')
 let data = document.getElementById('data')
+let outExist = document.getElementsByTagName('out')
+let APIurl = 'https://api.github.com/'
+
 APICall.onclick = function() {
-    fetch('https://api.github.com/orgs/SoftStackFactory/repos?sort=created')
+    if (outExist.length) {
+        console.log(outExist)
+        clearSearch()
+    }
+    let search = document.getElementById('searchInput')
+    fetch(APIurl + 'orgs/' + search.value + '/repos?sort=created')
         .then(response => response.json())
         .then(json => {
             console.log(json)
@@ -16,10 +24,16 @@ APICall.onclick = function() {
         })
 }
 
+function clearSearch() {
+    // let elem = document.getElementById("data");
+    console.log(elem)
+    outExist.parentNode.removeChild(outExist);
+}
 
-let openNav = document.getElementById('open')
+
+let toggleNav = document.getElementById('open')
 let open = true
-openNav.onclick = function() {
+toggleNav.onclick = function() {
     if(open) {
     open = false
     document.getElementById("mySidepanel").style.width = "250px";

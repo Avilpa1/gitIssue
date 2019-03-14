@@ -1,6 +1,6 @@
 body {
     height: 567px;
-    width: 784px;
+    width: 767px;
     background-color: #F6F8FA;
     font-family: "Lato", sans-serif;
   }
@@ -56,6 +56,24 @@ body {
     text-decoration: none;
 }
 
+#searchInput {
+  text-align: left;
+  margin-left: 33px;
+  border-radius: 2px;
+  width: 188px;
+  height: 27px;
+  background: #3c3b3b;
+  border: none;
+}
+
+#searchInput:focus {
+  background: lightgray;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* The sidepanel menu */
 .sidepanel {
@@ -67,15 +85,15 @@ body {
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.3s; /* 0.5 second transition effect to slide in the sidepanel */
+    padding-top: 15px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
   }
   
   /* The sidepanel links */
   .sidepanel a {
-    padding: 8px 8px 8px 32px;
+    padding: 15px 8px 8px 20px;
     text-decoration: none;
-    font-size: 25px;
+    /* font-size: 25px; */
     color: #818181;
     display: block;
     transition: 0.3s;
