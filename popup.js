@@ -44,11 +44,13 @@ function listOrgsIssues(org, repo) {
         .then(response => response.json())
         .then(json => {
             console.log(json)
+            document.getElementById('openIssues').innerHTML = json.length
             for(let x=0; x < json.length; x++) {
                 let out = document.createElement('div')
                 out.setAttribute("id", "issues");
                 // out.setAttribute("value", json[x].name);
-                out.innerHTML = json[x].title + '#' + json[x].number + '<br>' + json[x].body + '<br>';
+                // out.innerHTML = json[x].title + '#' + json[x].number + '<br>' + json[x].body + '<br>';
+                out.innerHTML = json[x].title + '#' + json[x].number + '<br>';
                 // out.innerHTML = json[x].body + '<br>';
                 // out.innerHTML = json[x].title + '<br>';
                 let br = document.createElement('br');

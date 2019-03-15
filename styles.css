@@ -1,7 +1,7 @@
 body {
     height: 567px;
-    width: 767px;
-    background-color: darkgray;
+    min-width: 767px;
+    background-color: #c0bfbf;
     font-family: "Lato", sans-serif;
     margin: 2px;
   }
@@ -78,13 +78,41 @@ body {
   outline: none;
 }
 
-#issueContainer {
-  height: 100px;
+#issueWrapper {
+  /* height: 100px; */
   border: black solid 1px;
   border-radius: 2px;
   /* padding: 7px; */
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
+
+#issueContainer {
+  padding: 10px;
+}
+
+#header {
+  height: 25px;
+  background-color: lightslategray
+}
+
+#main {
+  transition: margin-left .5s;
+  padding-top: 70px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  
+}
+
+#data {
+  cursor: pointer;
+}
+
+
+
+
+
+
 
 /* The sidepanel menu */
 .sidepanel {
@@ -137,18 +165,6 @@ body {
     width: 35px;
   }
 
-  #main {
-    transition: margin-left .5s;
-    padding-top: 70px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    
-  }
-
-  #data {
-    cursor: pointer;
-  }
   
   /* .openbtn:hover {
     background-color: #444;
