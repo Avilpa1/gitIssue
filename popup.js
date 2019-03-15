@@ -1,7 +1,7 @@
 
 let APICall = document.getElementById('APICall')
 let data = document.getElementById('data')
-let outExist = document.getElementsByTagName('out')
+let out = document.getElementsByTagName('out')
 let APIurl = 'https://api.github.com/'
 
 window.addEventListener("keypress",
@@ -12,10 +12,6 @@ window.addEventListener("keypress",
 });
 
 function searchOrgs() {
-    if (outExist.length) {
-        console.log(outExist)
-        clearSearch()
-    }
     let search = document.getElementById('searchInput')
     if(search.value == '') {
         alert('Nothing to seach..')
@@ -27,23 +23,44 @@ function searchOrgs() {
             for(let x=0; x < json.length; x++) {
                 let out = document.createElement('div')
                 out.setAttribute("id", "repo" + x);
+                out.setAttribute("value", json[x].name);
                 out.innerHTML = json[x].name + '<br>';
                 let br = document.createElement('br');
                 data.appendChild(out);
                 data.appendChild(br);
+
+                out.addEventListener("mousedown",function(event){
+                    console.log(event.srcElement.textContent);
+                    let repo = event.srcElement.textContent
+                    listOrgsIssues(search.value, repo)
+                   });
             }
         })
     }
-
 }
 
-function clearSearch() {
-    document.getElementsByTagName('out').innerHTML = ''
-    // var parent = document.getElementById("div1");
-    // var child = document.getElementById("p1");
-    // parent.removeChild(child);
-}
+function listOrgsIssues(org, repo) {
+        fetch(APIurl + 'repos/' + org + '/' + repo + '/issues')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            for(let x=0; x < json.length; x++) {
+                let out = document.createElement('div')
+                out.setAttribute("id", "issues");
+                // out.setAttribute("value", json[x].name);
+                out.innerHTML = json[x].title + '#' + json[x].number + '<br>' + json[x].body + '<br>';
+                // out.innerHTML = json[x].body + '<br>';
+                // out.innerHTML = json[x].title + '<br>';
+                let br = document.createElement('br');
+                main.appendChild(out);
+                main.appendChild(br);
 
+                // out.addEventListener("mousedown",function(event){
+                //     console.log(event.srcElement.textContent);
+                //    });
+            }
+        })
+}
 
 let toggleNav = document.getElementById('open')
 let open = true
