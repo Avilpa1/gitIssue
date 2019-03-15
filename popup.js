@@ -52,8 +52,8 @@ function listOrgsIssues(org, repo) {
                 // out.innerHTML = json[x].body + '<br>';
                 // out.innerHTML = json[x].title + '<br>';
                 let br = document.createElement('br');
-                main.appendChild(out);
-                main.appendChild(br);
+                issueContainer.appendChild(out);
+                issueContainer.appendChild(br);
 
                 // out.addEventListener("mousedown",function(event){
                 //     console.log(event.srcElement.textContent);
@@ -67,8 +67,8 @@ let open = true
 toggleNav.onclick = function() {
     if(open) {
     open = false
-    document.getElementById("mySidepanel").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidepanel").style.width = "260px";
+    document.getElementById("main").style.marginLeft = "260px";
     } else {
     open = true
     document.getElementById("mySidepanel").style.width = "0";
